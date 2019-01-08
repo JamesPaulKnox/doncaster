@@ -8,6 +8,16 @@
 * At this time, it is only planned to support long positions.
 * *Don't use this program to actually trade. It's a thought experiment.*
 
+### MOVING AVERAGE
+
+* This program will calculate both the exponential and simple moving averages.
+* It will find the average return & % that it worked for each, independently.
+* Comparing what happens to return using EMA vs SMA, it will calculate it's decision based on the better-performing MA.
+** Sometimes, the EMA detects hiccups, causing a false-alarm sell.
+** However, the EMA can also signal true-alarm sells faster.
+** By comparing the performance of the two, I hope it will mitigate false-alarms and maximize early warnings.
+
+# NOTES TO SELF
 
 ### CONSIDER THIS
 
@@ -17,15 +27,6 @@
 ** Actually, now that I think of it. Why not pull the whole past year's info and calculate a historical return using the method?
 ** That might make a decent filter, too. Only display stocks that have a positive return using the method, AND display % that it worked and didn't.
 ** If I ever want to make a 5 yr simulation, it'd be a matter of changing a couple variables and commenting a couple of lines out.
-
-### MOVING AVERAGE
-
-* This program will calculate both the exponential and simple moving averages.
-* It will find the average return & % that it worked for each, independently.
-* Comparing what happens to return using EMA vs SMA, it will calculate it's decision based on the better-performing MA.
-** Sometimes, the EMA detects hiccups, causing a false-alarm sell.
-** However, the EMA can also signal true-alarm sells faster.
-** By comparing the performance of the two, I hope it will mitigate false-alarms and maximize early warnings.
 
 #### EXPONENTIAL MOVING AVERAGE FORMULA
 
