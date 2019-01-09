@@ -35,7 +35,7 @@ print("Generating list of symbols")
 
 count = 0
 
-sector = "Communication Services"
+sector = None
 
 # Set sector to None for whole market.
 

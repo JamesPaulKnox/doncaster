@@ -66,13 +66,13 @@ def main(symbol, scope, a=20, b=50, c=100):
 		print("Fetching historical data for {}".format(pyiex_company.companyName(symbol)))
 	except:
 		print("The symbol is not valid. Skipping.")
-		quit()
+		exit()
 
 	resp_str = requests.get(base_url + version + "/stock/" + symbol + "/chart/" + scope).json()
 
 	if not resp_str:
 		print("This company has no data. Skipping.")
-		quit()
+		exit()
 
 	for i in resp_str:		
 		try:
