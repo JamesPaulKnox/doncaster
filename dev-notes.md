@@ -1,3 +1,5 @@
+# NOTES TO SELF
+
 ### MAIN IDEA
 
 * This is [going to be] a probably-terrible security market program.
@@ -17,8 +19,6 @@
 ** However, the EMA can also signal true-alarm sells faster.
 ** By comparing the performance of the two, I hope it will mitigate false-alarms and maximize early warnings.
 
-# NOTES TO SELF
-
 ### CONSIDER THIS
 
 * Maybe I should calculate the MAs using VWAP?
@@ -30,8 +30,7 @@
 
 #### EXPONENTIAL MOVING AVERAGE FORMULA
 
-Current EMA = (Current Price x alpha) + (Previous EMA x (1 - alpha))
-alpha = (2 / (1 + n))
+Current EMA = ((today's VWAP - yesterday's EMA) * (2 / (n + 1)) + yesterday's EMA)
 
 * NOTE: For the initial value of previous EMA, use SMA.
 * Also, because alpha is a constant for *every* EMA of the same period,
