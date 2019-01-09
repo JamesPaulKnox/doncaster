@@ -71,7 +71,10 @@ def main(symbol, scope, a=20, b=50, c=100):
 
 	for i in resp_str:		
 		try:
-			vwap_list.append(i["vwap"])
+			try:
+				vwap_list.append(i["vwap"])
+			except:
+				vwap_list.append(i["close"])
 			date_list.append([int(i["date"].replace("-", ""))])
 			
 			sma_a.append(sma(vwap_list, a))
