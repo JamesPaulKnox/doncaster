@@ -1,3 +1,25 @@
+
+# ~ Copyright 2019, James P. Knox
+
+# ~ Permission is hereby granted, free of charge, to any person
+# ~ obtaining a copy of this software and associated documentation files
+# ~ (the "Software"), to deal in the Software without restriction,
+# ~ including without limitation the rights to use, copy, modify, merge,
+# ~ publish, distribute, sublicense, and/or sell copies of the Software,
+# ~ and to permit persons to whom the Software is furnished to do so,
+# ~ subject to the following conditions:
+
+# ~ The above copyright notice and this permission notice shall be
+# ~ included in all copies or substantial portions of the Software.
+
+# ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# ~ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+# ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+# ~ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+# ~ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+# ~ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+# ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 from pyiex_config import *
 import copy, pyiex_company
 
@@ -221,11 +243,6 @@ def main(symbol, scope, a=20, b=50, c=100):
 		recent = sma_recent
 		date_recent = sma_date_recent
 
-	disclaimer = "Under NO circumstances should you consider this \
-		program's output as actual trading advice. This program is not \
-		intended for real-world financial activities - but instead a \
-		hypothetical exercise in programming."
-
 	data = { \
 		"est_yield": est_yield, \
 		"decision": decision, \
@@ -251,7 +268,12 @@ def main(symbol, scope, a=20, b=50, c=100):
 		"ema_est_yield": ema_est_yield, \
 		"vwap_list": vwap_list, \
 		"date_list": date_list, \
-		"disclaimer": disclaimer \
+		"sma_a": sma_a, \
+		"sma_b": sma_b, \
+		"sma_c": sma_c, \
+		"ema_a": ema_a, \
+		"ema_b": ema_b, \
+		"ema_c": ema_c \
 		}
 	
 	return data
