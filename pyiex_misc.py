@@ -19,7 +19,7 @@ def sectorPerformance(sector=None):
                 pass
 
 
-def listsymbols(sector=None):
+def listSymbols(sector=None):
         sectorDict = sectorPerformance(sector)
         if sector == None:
             symbolList = []
