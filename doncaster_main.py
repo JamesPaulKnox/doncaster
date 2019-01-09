@@ -84,8 +84,12 @@ def main(symbol, scope, a=20, b=50, c=100):
 		
 		except:
 			
-			vwap_list = [resp_str[0]["vwap"]]
-			date_list = [int(resp_str[0]["date"].replace("-", ""))]
+			try:
+				vwap_list = [i["vwap"]]
+			except:
+				vwap_list = [i["close"]]
+			
+			date_list = [int(i["date"].replace("-", ""))]
 			
 			sma_a = [sma(vwap_list, a)]
 			sma_b = [sma(vwap_list, b)]
@@ -94,6 +98,7 @@ def main(symbol, scope, a=20, b=50, c=100):
 			ema_a = [ema(vwap_list, a, sma_a[-1])]
 			ema_b = [ema(vwap_list, b, sma_b[-1])]
 			ema_c = [ema(vwap_list, c, sma_c[-1])]
+
 		
 	for i in range(0, max(sma_a.count(None),sma_a.count(None),sma_b.count(None),sma_c.count(None),ema_b.count(None),ema_c.count(None))):
 		sma_a.remove(sma_a[0])
