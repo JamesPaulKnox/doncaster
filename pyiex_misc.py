@@ -26,9 +26,9 @@ def listSymbols(sector=None):
             for value in sectorDict:
                 resp_str = requests.get(base_url + version +
                            "/stock/market/collection/sector?collectionName=" +
-                           value["name"]).json()
+                           value).json()
                 for y in resp_str:
-                    symbolList.append(y["ticker"])
+                    symbolList.append(y["symbol"])
             return symbolList
         else:
             symbolList = []
@@ -36,5 +36,5 @@ def listSymbols(sector=None):
                        "/stock/market/collection/sector?collectionName=" +
                        sector).json()
             for y in resp_str:
-                symbolList.append(y["ticker"])
+                symbolList.append(y["symbol"])
             return symbolList 
