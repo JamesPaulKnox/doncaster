@@ -65,9 +65,14 @@ def main(symbol, scope, a=20, b=50, c=100):
 	try:
 		print("Fetching historical data for {}".format(pyiex_company.companyName(symbol)))
 	except:
-		exit
+		print("The symbol is not valid. Skipping.")
+		quit()
 
 	resp_str = requests.get(base_url + version + "/stock/" + symbol + "/chart/" + scope).json()
+
+	if not resp_str:
+		print("This company has no data. Skipping.")
+		quit()
 
 	for i in resp_str:		
 		try:
@@ -75,6 +80,7 @@ def main(symbol, scope, a=20, b=50, c=100):
 				vwap_list.append(i["vwap"])
 			except:
 				vwap_list.append(i["close"])
+			
 			date_list.append([int(i["date"].replace("-", ""))])
 			
 			sma_a.append(sma(vwap_list, a))
