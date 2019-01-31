@@ -27,6 +27,7 @@ import json
 import requests
 import copy
 import os
+import pickle
 
 base_url = "https://api.iextrading.com/"
 version = "1.0/"
@@ -36,17 +37,17 @@ app_dir = "/run/media/james/MediaB/projects/doncaster_2/"
 
 ########################################################################
 
-def get_json_path(symbol):
+def get_path(symbol, sub, ext):
 # This function will find the path a
 # json file should be in, given a symbol
 
-	path = app_dir + "chart/" + symbol + ".json"
+	path = app_dir + sub + "/" + symbol + "." + ext
 	
 	return path
 	
 ########################################################################
 
-def get_json_symbol(path):
+def get_symbol(path):
 # This function will find the symbol of
 # a saved json file, given a path
 
@@ -67,7 +68,7 @@ def get_json(symbol):
 	if r.status_code == 404: # If symbol doesn't exist, skip
 		return
 	
-	f = open(get_json_path(symbol), "wb+")
+	f = open(get_path(symbol, "chart", "json"), "wb+")
 	
 	f.write(r.content)
 	f.close()
@@ -78,8 +79,41 @@ def read_json(symbol):
 # This function will read the local copy
 # of the IEX chart JSON file, given a file name.
 
-
-	return json.load(open(get_json_path(symbol)))
+	return json.load(open(get_path(symbol, "chart", "json")))
 
 ########################################################################
+
+def save_vwap(symbol):
+# Given a symbol, this function will make
+# a list with daily vwaps, and save it to a file
+
+	json = copy.copy(read_json(symbol))
+	
+	l = []
+	
+	for day in json:
+		
+		try:
+			vwap = day["vwap"]
+		except:
+			vwap = ((day["open"] + day["close"]) / 2)
+		
+		l.append(vwap)
+
+	with open(get_path(symbol, "vwap", "list"), "wb+") as fp:
+		pickle.dump(l, fp)
+
+########################################################################
+
+def get_vwap(symbol):
+# Given a symbol, this function will load
+# a saved VWAP list back into memory
+
+	with open (get_path(symbol, "vwap", "list"), 'rb') as fp:
+		l = pickle.load(fp)
+		
+	return l
+
+########################################################################
+
 
